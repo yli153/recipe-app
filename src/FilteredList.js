@@ -9,9 +9,9 @@ class FilteredList extends Component {
             diet: "All",
             type: "All",
             flavor: "All",
-            prep: "Select",
-            cook: "Select",
-            servings: "Select"
+            prepTime: "Select",
+            cookTime: "Select",
+            servingSize: "Select"
         };
     }
     onSelectFilterDiet = event => {
@@ -62,6 +62,7 @@ class FilteredList extends Component {
         this.setState ({
             prepTime: event
         })
+        return event;
     }
 
     sortPrep = (a, b) => {
@@ -73,13 +74,48 @@ class FilteredList extends Component {
             return 0;
         }
     }
+
+    onSelectSortCook = event => {
+        console.log(event);
+        this.setState ({
+            cookTime: event
+        })
+        return event;
+    }
+
+    sortCook = (a, b) => {
+        if (this.state.cookTime === "ShortFirst") {
+            return a.cook - b.cook;
+        } else if (this.state.cookTime === "LongFirst") {
+            return b.cook - a.cook;
+        } else {
+            return 0;
+        }
+    }
+    
+    onSelectSortServings = event => {
+        this.setState ({
+            servingSize: event
+        })
+        return event;
+    }
+
+    sortServings = (a, b) => {
+        if (this.state.servingSize === "FewFirst") {
+            return a.servings - b.servings;
+        } else if (this.state.servingSize === "MoreFirst") {
+            return b.servings - a.servings;
+        } else {
+            return 0;
+        }
+    }
     
     render() {
         return (
             <div>
             <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} 
-                    onSelectSortPrep={this.onSelectSortPrep} />
-            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortPrep)}/>
+                    onSelectSortPrep={this.onSelectSortPrep} onSelectSortCook={this.onSelectSortCook} onSelectSortServings={this.onSelectSortServings}prepTitle={this.state.prepTime} cookTitle={this.state.cookTime} servingsTitle={this.state.servingSize}/>
+            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortPrep).sort(this.sortCook).sort(this.sortServings)}/>
             </div>
         );
     }
