@@ -7,7 +7,7 @@ import FilteredList from './FilteredList';
 import TopBar from './TopBar';
 
 const productList=[
-  {name: "Mixed Berries Tart", prep: 30, cook: 20, diet: "Normal", type: "Tart", ingredient: "Fruits", servings: 8, img: 'recipes/berries_tart.jpg'},
+  {name: "Summer Mixed Berries Tart", prep: 30, cook: 20, diet: "Normal", type: "Tart", ingredient: "Fruits", servings: 8, img: 'recipes/berries_tart.jpg'},
   {name: "Carrot Cake with Cream Cheese", prep: 20, cook: 45, diet: "Normal", type: "Cake", ingredient: "Vegetables", servings: 16, img: 'recipes/carrot_cake.jpg'},
   {name: "French Apple Tart", prep: 25, cook: 70, diet: "Normal", type: "Tart", ingredient: "Fruits", servings: 10, img: 'recipes/apple_tart.jpg'}, 
   {name: "Strawberry Oatmeal Cookies", prep: 15, cook: 15, diet: "Normal", type: "Cookie", ingredient: "Fruits", servings: 24, img: 'recipes/oatmeal_cookies.jpg'},
@@ -19,7 +19,7 @@ const productList=[
   {name: "Chocolate Chip Cookies", prep: 15, cook: 20, diet: "Vegan", type: "Cookie", ingredient: "Chocolate", servings: 24, img: 'recipes/vegan_choco_cookie.jpg'},
   {name: "Cinnamon Apple Cake", prep: 20, cook: 45, diet: "Vegan", type: "Cake", ingredient: "Fruits", servings: 12, img: 'recipes/vegan_apple_cake.PNG'},
   {name: "Banana Cream Pie", prep: 440, cook: 40, diet: "Vegan", type: "Pie", ingredient: "Fruits", servings: 8, img: 'recipes/vegan_banana_pie.jpg'},
-  {name: "Chocolate Cake", prep: 15, cook: 40, diet: "Keto", type: "Cake", ingredient: "Chocolate", servings: 12, img: 'recipes/keto_choco_cake.jpg'},
+  {name: "Chocolate Lava Cake", prep: 15, cook: 40, diet: "Keto", type: "Cake", ingredient: "Chocolate", servings: 12, img: 'recipes/keto_choco_cake.jpg'},
   {name: "Pumpkin Cheesecake", prep: 10, cook: 80, diet: "Keto", type: "Cake", ingredient: "Vegetables", servings: 16, img: 'recipes/keto_pumpkin_cheesecake.jpg'},
   {name: "Pumpkin Pie", prep: 15, cook: 45, diet: "Keto", type: "Pie", ingredient: "Vegetables", servings: 16, img: 'recipes/keto_pumpkin_pie.jpg'}
 ]
@@ -27,14 +27,14 @@ const productList=[
 function App() {
   return (
     <main>
-    <h1 class="mb-4">Quarantine Baking Recipes</h1>
+    <h1 class="mb-4 heading">Quarantine Baking Recipes</h1>
     <Row>
       <Col xs={8}>
         <TopBar></TopBar>
         <FilteredList list={productList}></FilteredList>
       </Col>
       <Col xs={4}>
-        <h4>Favorite Recipes</h4>
+        <h4 class="favorite-header"><b>Favorite Recipes &hearts;</b></h4>
         </Col>
   </Row>
   </main>

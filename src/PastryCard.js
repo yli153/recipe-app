@@ -28,19 +28,18 @@ class PastryCard extends Component {
                     <Card.Img variant="top" width="100%" src={this.props.item.img} className="image" alt="pastry image"/>
                     <Card.Body>
                     <Row>
-                        <Col xs={8}><Card.Title>{this.props.item.name}</Card.Title></Col>
-                        <Col xs={4}><img class="pastry-icon" src={this.pastry_type()} alt="pastry icon"></img>
-                        </Col>
+                        <Col xs={8}><Card.Title><b>{this.props.item.name}</b></Card.Title></Col>
+                        <Col xs={4}><img class="pastry-icon" src={this.pastry_type()} alt="pastry icon"></img></Col>
                     </Row>
                     <Card.Subtitle className="mb-2 text-muted"><b>{this.props.item.diet}</b></Card.Subtitle>  
                     <Card.Text>Flavor: {this.props.item.ingredient}</Card.Text>
                     <Button variant="primary">Add to Favorite</Button>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                <ListGroup.Item>Prep Time: {this.props.item.prep} minutes</ListGroup.Item>
-                <ListGroup.Item>Cook Time: {this.props.item.cook} minutes</ListGroup.Item>
-                <ListGroup.Item>Servings: {this.props.item.servings}</ListGroup.Item>
-                </ListGroup>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                        <ListGroup.Item>Prep Time: {this.props.item.prep} minutes</ListGroup.Item>
+                        <ListGroup.Item>Cook Time: {this.props.item.cook} minutes</ListGroup.Item>
+                        <ListGroup.Item>Servings: {this.props.item.servings}</ListGroup.Item>
+                        </ListGroup>
                 </Card>
             </div>
         );
