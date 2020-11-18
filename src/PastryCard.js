@@ -32,7 +32,7 @@ class PastryCard extends Component {
                         <Col xs={4}><img class="pastry-icon" src={this.pastry_type()} alt="pastry icon"></img></Col>
                     </Row>
                     <Card.Subtitle className="mb-2 text-muted"><b>{this.props.item.diet}</b></Card.Subtitle>  
-                    <Card.Text>Flavor: {this.props.item.ingredient}</Card.Text>
+                    <Card.Text>Flavor: {this.props.item.flavor}</Card.Text>
                     <Button variant="primary">Add to Favorite</Button>
                     </Card.Body>
                     <ListGroup className="list-group-flush">

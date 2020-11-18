@@ -7,10 +7,15 @@ class DisplayList extends Component {
         super(props);
     }
     render() {
-        let pastryCards = this.props.list.map(item => <PastryCard item={item}/>) 
-        return (
-            <CardDeck>{pastryCards}</CardDeck>
-        );
+        if (this.props.list.length === 0) {
+            return "No results match the filter(s)";
+        }
+        else {
+            let pastryCards = this.props.list.map(item => <PastryCard item={item}/>) 
+            return (
+                <CardDeck>{pastryCards}</CardDeck>
+            );
+        }  
     }
 }
 export default DisplayList;

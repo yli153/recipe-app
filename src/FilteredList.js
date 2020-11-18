@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DisplayList from './DisplayList';
+import TopBar from './TopBar';
 
 class FilteredList extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class FilteredList extends Component {
         this.state = {
             diet: "All",
             type: "All",
-            ingredient: "All"
+            flavor: "All"
         };
     }
     onSelectFilterDiet = event => {
@@ -39,15 +40,15 @@ class FilteredList extends Component {
             return false;
         }
     };
-    onSelectFilterIngredient = event => {
+    onSelectFilterFlavor = event => {
         this.setState ({
-            ingredient: event
+            flavor: event
         })
     };
-    matchesFilterIngredient = item => {
-        if (this.state.ingredient === "All") {
+    matchesFilterFlavor = item => {
+        if (this.state.flavor === "All") {
             return true;
-        } else if (this.state.ingredient === item.ingredient) {
+        } else if (this.state.flavor === item.flavor) {
             return true;
         } else {
             return false;
@@ -55,7 +56,10 @@ class FilteredList extends Component {
     };
     render() {
         return (
-            <DisplayList list={this.props.list.filter(item => this.matchesFilterDiet(item))}/>
+            <div>
+            <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} />
+            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor)}/>
+            </div>
         );
     }
 }

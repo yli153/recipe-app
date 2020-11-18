@@ -42,10 +42,6 @@ main {
   margin-bottom: 15px !important;
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(0,0,0,.7) !important;
-}
-
 .pastry-icon {
   width: 3rem;
   height: 3rem;
