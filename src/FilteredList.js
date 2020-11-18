@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import DisplayList from './DisplayList';
 
 class FilteredList extends Component {
     constructor(props) {
@@ -7,7 +7,7 @@ class FilteredList extends Component {
         this.state = {
             diet: "All",
             type: "All",
-            ingredients: "All"
+            ingredient: "All"
         };
     }
     onSelectFilterDiet = event => {
@@ -53,6 +53,10 @@ class FilteredList extends Component {
             return false;
         }
     };
+    render() {
+        return (
+            <DisplayList list={this.props.list.filter(item => this.matchesFilterDiet(item))}/>
+        );
+    }
 }
-
 export default FilteredList;
