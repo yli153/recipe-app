@@ -8,7 +8,10 @@ class FilteredList extends Component {
         this.state = {
             diet: "All",
             type: "All",
-            flavor: "All"
+            flavor: "All",
+            prep: "Select",
+            cook: "Select",
+            servings: "Select"
         };
     }
     onSelectFilterDiet = event => {
@@ -54,11 +57,29 @@ class FilteredList extends Component {
             return false;
         }
     };
+    
+    onSelectSortPrep = event => {
+        this.setState ({
+            prepTime: event
+        })
+    }
+
+    sortPrep = (a, b) => {
+        if (this.state.prepTime === "ShortFirst") {
+            return a.prep - b.prep;
+        } else if (this.state.prepTime === "LongFirst") {
+            return b.prep - a.prep;
+        } else {
+            return 0;
+        }
+    }
+    
     render() {
         return (
             <div>
-            <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} />
-            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor)}/>
+            <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} 
+                    onSelectSortPrep={this.onSelectSortPrep} />
+            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortPrep)}/>
             </div>
         );
     }

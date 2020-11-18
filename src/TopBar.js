@@ -44,9 +44,9 @@ class TopBar extends Component {
           <span class="category-color"><b>Sort by Prep Time:</b></span>
           <Nav className="mr-auto">
             <NavDropdown title="Select" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Select</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Shortest to Longest</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Longest to Shortest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="Select" onSelect={this.props.onSelectSortPrep}>Select</NavDropdown.Item>
+              <NavDropdown.Item eventKey="ShortFirst" onSelect={this.props.onSelectSortPrep}>Shortest to Longest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="LongFirst" onSelect={this.props.onSelectSortPrep}>Longest to Shortest</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar>
@@ -54,9 +54,9 @@ class TopBar extends Component {
           <span class="category-color"><b>Sort by Cook Time:</b></span>
           <Nav className="mr-auto">
             <NavDropdown title="Select" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Select</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Shortest to Longest</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Longest to Shortest</NavDropdown.Item>
+              <NavDropdown.Item>Select</NavDropdown.Item>
+              <NavDropdown.Item>Shortest to Longest</NavDropdown.Item>
+              <NavDropdown.Item>Longest to Shortest</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar>
@@ -64,9 +64,9 @@ class TopBar extends Component {
           <span class="category-color"><b>Sort by Servings:</b></span>
           <Nav className="mr-auto">
             <NavDropdown title="Select" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Select</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Fewest to Greatest</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Greatest to Fewest</NavDropdown.Item>
+              <NavDropdown.Item>Select</NavDropdown.Item>
+              <NavDropdown.Item>Fewest to Greatest</NavDropdown.Item>
+              <NavDropdown.Item>Greatest to Fewest</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar>
