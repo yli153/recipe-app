@@ -9,35 +9,24 @@ class TopBar extends Component {
     super(props);
   }
 
-  showPrepTitle = (state) => {
+  showSortTitle = (state) => {
     if (state === "Select") {
       return "Select";
-    } else if (state === "ShortFirst") {
-      return "Shortest to Longest";
+    } else if (state === "PrepAscending") {
+      return "Prep Time: Shortest to Longest";
+    } else if (state === "PrepDescending") {
+      return "Prep Time: Longest to Shortest";
+    } else if (state === "CookAscending") {
+      return "Cook Time: Shortest to Longest";
+    } else if (state === "CookDescending") {
+      return "Cook Time: Longest to Shortest";
+    } else if (state === "ServingAscending") {
+      return "Servings: Less to More";
     } else {
-      return "Longest to Shortest";
+      return "Servings: More to Less";
     }
   }
-
-  showCookTitle = (state) => {
-    if (state === "Select") {
-      return "Select";
-    } else if (state === "Short") {
-      return "Shortest to Longest";
-    } else {
-      return "Longest to Shortest";
-    }
-  }
-
-  showServingsTitle = (state) => {
-    if (state === "Select") {
-      return "Select";
-    } else if (state === "FewFirst") {
-      return "Fewest to Greatest";
-    } else {
-      return "Greatest to Fewest";
-    }
-  }
+  
   render() {  
     return (
       <div class="mb-4">
@@ -71,32 +60,16 @@ class TopBar extends Component {
           </Nav>
         </Navbar>
         <Navbar bg="light" variant="light">
-          <span class="category-color"><b>Sort by Prep Time:</b></span>
+          <span class="category-color"><b>Sort by:</b></span>
           <Nav className="mr-auto">
-            <NavDropdown title={this.showPrepTitle(this.props.prepTitle)} id="basic-nav-dropdown">
-              <NavDropdown.Item eventKey="Select" onSelect={this.props.onSelectSortPrep}>Select</NavDropdown.Item>
-              <NavDropdown.Item eventKey="ShortFirst" onSelect={this.props.onSelectSortPrep}>Shortest to Longest</NavDropdown.Item>
-              <NavDropdown.Item eventKey="LongFirst" onSelect={this.props.onSelectSortPrep}>Longest to Shortest</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar>
-        <Navbar bg="light" variant="light">
-          <span class="category-color"><b>Sort by Cook Time:</b></span>
-          <Nav className="mr-auto">
-            <NavDropdown title={this.showCookTitle(this.props.cookTitle)} id="basic-nav-dropdown">
-              <NavDropdown.Item eventKey="Select" onSelect={this.props.onSelectSortCook}>Select</NavDropdown.Item>
-              <NavDropdown.Item eventKey="ShortFirst" onSelect={this.props.onSelectSortCook}>Shortest to Longest</NavDropdown.Item>
-              <NavDropdown.Item eventKey="LongFirst" onSelect={this.props.onSelectSortCook}>Longest to Shortest</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar>
-        <Navbar bg="light" variant="light">
-          <span class="category-color"><b>Sort by Servings:</b></span>
-          <Nav className="mr-auto">
-            <NavDropdown title={this.showServingsTitle(this.props.servingSize)} id="basic-nav-dropdown">
-              <NavDropdown.Item eventKey="Select" onSelect={this.props.onSelectSortServings}>Select</NavDropdown.Item>
-              <NavDropdown.Item eventKey="FewFirst" onSelect={this.props.onSelectSortServings}>Fewest to Greatest</NavDropdown.Item>
-              <NavDropdown.Item eventKey="MoreFirst" onSelect={this.props.onSelectSortServings}>Greatest to Fewest</NavDropdown.Item>
+            <NavDropdown title={this.showSortTitle(this.props.sortTitle)} id="basic-nav-dropdown">
+              <NavDropdown.Item eventKey="Select" onSelect={this.props.onSelectSort}>Select</NavDropdown.Item>
+              <NavDropdown.Item eventKey="PrepAscending" onSelect={this.props.onSelectSort}>Prep Time: Shortest to Longest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="PrepDescending" onSelect={this.props.onSelectSort}>Prep Time: Longest to Shortest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="CookAscending" onSelect={this.props.onSelectSort}>Cook Time: Shortest to Longest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="CookDescending" onSelect={this.props.onSelectSort}>Cook Time: Longest to Shortest</NavDropdown.Item>
+              <NavDropdown.Item eventKey="ServingsAscending" onSelect={this.props.onSelectSort}>Servings: Less to More</NavDropdown.Item>
+              <NavDropdown.Item eventKey="ServingsDescending" onSelect={this.props.onSelectSort}>Servings: More to Less</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar>

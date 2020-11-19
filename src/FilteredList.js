@@ -9,9 +9,7 @@ class FilteredList extends Component {
             diet: "All",
             type: "All",
             flavor: "All",
-            prepTime: "Select",
-            cookTime: "Select",
-            servingSize: "Select"
+            sortCriteria: "Select"
         };
     }
     onSelectFilterDiet = event => {
@@ -58,53 +56,26 @@ class FilteredList extends Component {
         }
     };
     
-    onSelectSortPrep = event => {
+    onSelectSort = event => {
         this.setState ({
-            prepTime: event
+            sortCriteria: event
         })
         return event;
     }
 
-    sortPrep = (a, b) => {
-        if (this.state.prepTime === "ShortFirst") {
+    sortList = (a, b) => {
+        if (this.state.sortCriteria === "PrepAscending") {
             return a.prep - b.prep;
-        } else if (this.state.prepTime === "LongFirst") {
+        } else if (this.state.sortCriteria === "PrepDescending") {
             return b.prep - a.prep;
-        } else {
-            return 0;
-        }
-    }
-
-    onSelectSortCook = event => {
-        console.log(event);
-        this.setState ({
-            cookTime: event
-        })
-        return event;
-    }
-
-    sortCook = (a, b) => {
-        if (this.state.cookTime === "ShortFirst") {
+        } else if (this.state.sortCriteria === "CookAscending") {
             return a.cook - b.cook;
-        } else if (this.state.cookTime === "LongFirst") {
+        } else if (this.state.sortCriteria === "CookDescending") {
             return b.cook - a.cook;
-        } else {
-            return 0;
-        }
-    }
-    
-    onSelectSortServings = event => {
-        this.setState ({
-            servingSize: event
-        })
-        return event;
-    }
-
-    sortServings = (a, b) => {
-        if (this.state.servingSize === "FewFirst") {
-            return a.servings - b.servings;
-        } else if (this.state.servingSize === "MoreFirst") {
-            return b.servings - a.servings;
+        } else if (this.state.sortCriteria === "ServingsAscending") {
+            return a.servings- b.servings;
+        } else if (this.state.sortCriteria === "ServingsDescending") {
+            return b.servings- a.servings;
         } else {
             return 0;
         }
@@ -113,9 +84,8 @@ class FilteredList extends Component {
     render() {
         return (
             <div>
-            <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} 
-                    onSelectSortPrep={this.onSelectSortPrep} onSelectSortCook={this.onSelectSortCook} onSelectSortServings={this.onSelectSortServings}prepTitle={this.state.prepTime} cookTitle={this.state.cookTime} servingsTitle={this.state.servingSize}/>
-            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortPrep).sort(this.sortCook).sort(this.sortServings)}/>
+            <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} onSelectSort={this.onSelectSort} sortTitle={this.state.sortCriteria}/>
+            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortList)}/>
             </div>
         );
     }
