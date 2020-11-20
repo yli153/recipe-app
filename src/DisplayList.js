@@ -11,7 +11,7 @@ class DisplayList extends Component {
             return "No results match the filter(s)";
         }
         else {
-            let pastryCards = this.props.list.map(item => <PastryCard item={item}/>) 
+            let pastryCards = this.props.list.map(item => <PastryCard item={item} addFavorite={this.props.addFavorite}/>) 
             return (
                 <CardDeck>{pastryCards}</CardDeck>
             );

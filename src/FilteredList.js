@@ -61,7 +61,7 @@ class FilteredList extends Component {
             sortCriteria: event
         })
         return event;
-    }
+    };
 
     sortList = (a, b) => {
         if (this.state.sortCriteria === "PrepAscending") {
@@ -79,13 +79,13 @@ class FilteredList extends Component {
         } else {
             return 0;
         }
-    }
+    };
     
     render() {
         return (
             <div>
             <TopBar onSelectFilterDiet={this.onSelectFilterDiet} onSelectFilterType={this.onSelectFilterType} onSelectFilterFlavor={this.onSelectFilterFlavor} onSelectSort={this.onSelectSort} sortTitle={this.state.sortCriteria}/>
-            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortList)}/>
+            <DisplayList list={this.props.list.filter(this.matchesFilterDiet).filter(this.matchesFilterType).filter(this.matchesFilterFlavor).sort(this.sortList)} addFavorite={this.props.addFavorite}/>
             </div>
         );
     }

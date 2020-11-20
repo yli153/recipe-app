@@ -28,7 +28,8 @@ main {
 }
 
 .heading {
-  color: #b86b77;
+  color: #7c3042;
+  text-shadow: -3px 4px #eabfb9;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -38,8 +39,6 @@ main {
 }
 
 .card-deck .card {
-  width: 17rem;
-  height: 41rem;
   margin-bottom: 15px !important;
 }
 
@@ -51,6 +50,15 @@ main {
 .btn-primary {
   background-color: #dbadad !important;
   border-color: #dbadad !important;
+  border-radius: 8px !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color:white !important;
+  border: 3px solid #dbadad !important;
+  border-radius: 8px !important;
+  color: #332529 !important;
 }
 
 .category-color {
@@ -58,7 +66,34 @@ main {
 }
 
 .favorite-header {
+  color: #b86b77;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  border-bottom: 3px solid #eabfb9;
+}
+
+.time-aggregator {
+  background-color: #e6c4bc;
+  color: black;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.no-favorite {
+  min-height: 10rem;
+  font-size: 1.2rem;
+}
+
+.favorite-item-name {
+  font-size: 1.25rem;
+}
+
+.remove-column {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove-button {
+  height: 2.5rem;
 }

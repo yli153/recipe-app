@@ -21,10 +21,11 @@ class PastryCard extends Component {
             return 'recipes/pie_icon.png';
         }
     };
+
     render() {
         return (
-            <div>
-                <Card bg="light">
+            <div key={this.props.item.id}>
+                <Card bg="light" style={{ width: '17rem', height: '41rem'}}>
                     <Card.Img variant="top" width="100%" src={this.props.item.img} className="image" alt="pastry image"/>
                     <Card.Body>
                     <Row>
@@ -33,13 +34,13 @@ class PastryCard extends Component {
                     </Row>
                     <Card.Subtitle className="mb-2 text-muted"><b>{this.props.item.diet}</b></Card.Subtitle>  
                     <Card.Text>Flavor: {this.props.item.flavor}</Card.Text>
-                    <Button variant="primary">Add to Favorite</Button>
+                    <Button variant="primary" onClick={() => this.props.addFavorite(this.props.item)}>Add to Favorite</Button>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Prep Time: {this.props.item.prep} minutes</ListGroup.Item>
                         <ListGroup.Item>Cook Time: {this.props.item.cook} minutes</ListGroup.Item>
                         <ListGroup.Item>Servings: {this.props.item.servings}</ListGroup.Item>
-                        </ListGroup>
+                    </ListGroup>
                 </Card>
             </div>
         );
