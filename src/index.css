@@ -34,6 +34,13 @@ main {
   padding-bottom: 1rem;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: #007bff !important;
+}
+.navbar-light .navbar-nav .nav-link.active {
+  color: black !important;
+}
+
 .image{
   height: auto;
 }
@@ -77,6 +84,7 @@ main {
   color: black;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-right: 2%;
   font-size: 1.1rem;
 }
 
@@ -85,15 +93,24 @@ main {
   font-size: 1.2rem;
 }
 
+.favorite-cards {
+  display: flex;
+  flex-direction: column;
+}
+
 .favorite-item-name {
   font-size: 1.25rem;
 }
 
-.remove-column {
+.align-right {
   display: flex;
   justify-content: flex-end;
 }
 
 .remove-button {
   height: 2.5rem;
+}
+
+@media only screen and (max-width: 976px) {
+ 
 }

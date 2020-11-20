@@ -34,7 +34,7 @@ class PastryCard extends Component {
                     </Row>
                     <Card.Subtitle className="mb-2 text-muted"><b>{this.props.item.diet}</b></Card.Subtitle>  
                     <Card.Text>Flavor: {this.props.item.flavor}</Card.Text>
-                    <Button variant="primary" onClick={() => this.props.addFavorite(this.props.item)}>Add to Favorite</Button>
+                    <Button variant="primary" onClick={() => this.props.addFavorite(this.props.item.id)}>Add to Favorite</Button>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Prep Time: {this.props.item.prep} minutes</ListGroup.Item>
