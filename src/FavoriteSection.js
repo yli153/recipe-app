@@ -4,12 +4,17 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import CardColumns from 'react-bootstrap/CardColumns'
+import CardColumns from 'react-bootstrap/CardColumns';
+
+/** Component FavoriteSection to create cards for recipes added to favorite and aggregate the total time (including both prep and cook time) 
+ * for all favorite recipes inherited from App.js */
 
 class FavoriteSection extends Component {
     constructor(props) {
         super(props);
     }
+    /** Function createFavoriteItem which takes in a favorite recipe and creates a card for it; in particular, the removeFavorite function inherited from App.js is called here
+     *  in the remove button and triggered on click*/
     createFavoriteItem = (item) => {
         return(
             
@@ -30,6 +35,7 @@ class FavoriteSection extends Component {
         );
     };
 
+    /** Function convertTime which converts time in minutes to the format of "X hr(s) Y mins" if the total time exceeds 60 minutes */
     convertTime = (time) => {
         const hr_min = [Math.floor(time/60), time%60]; 
         if (hr_min[0] === 0) {
@@ -42,6 +48,7 @@ class FavoriteSection extends Component {
     };
 
     render() {
+        /** Special case to print out a message when there hasn't been any recipe added to the favorite section yet */
         if (this.props.list.length === 0) {
             return (
                 <div>
@@ -52,11 +59,16 @@ class FavoriteSection extends Component {
                     </Row>
                 </div>);
         } else {
+            /** Using map function and calling createFavoriteItem function to create a card for each favorite recipe */
             let favoriteCards = this.props.list.map(item => this.createFavoriteItem(item)); 
+            /** Using map function and reduce function to aggregate the prep time for all favorite recipes */
             let totalPrepTime = this.props.list.map(item => item.prep).reduce((a, c) => a + c);
+            /** Using map function and reduce function to aggregate the cook time for all favorite recipes */
             let totalCookTime = this.props.list.map(item => item.cook).reduce((a, c) => a + c);
+            /** Adding total prep and cook time to get the final total time */
             let totalTime = totalPrepTime + totalCookTime;
             return (
+                /** Rendering the Favorite Section */
                 <div>
                     <CardColumns className="favorite-cards">{favoriteCards}</CardColumns>
                     <Row className="time-aggregator">

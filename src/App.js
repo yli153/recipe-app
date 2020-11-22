@@ -6,10 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FilteredList from './FilteredList';
 import FavoriteSection from './FavoriteSection';
 
+/** Main component App.js which renders all the sub-components */ 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      /** A list of recipes with values for id, name, prep time, cook time, dietary instruction, type of dessert, flavor, number of servings and image */
       recipeList: [
         {id: "a", name: "Summer Mixed Berries Tart", prep: 30, cook: 20, diet: "Normal", type: "Tart", flavor: "Fruits", servings: 8, img: 'recipes/berries_tart.jpg'},
         {id: "b", name: "Carrot Cake with Cream Cheese", prep: 20, cook: 45, diet: "Normal", type: "Cake", flavor: "Vegetables", servings: 16, img: 'recipes/carrot_cake.jpg'},
@@ -27,10 +29,12 @@ class App extends Component {
         {id: "n", name: "Pumpkin Cheesecake", prep: 20, cook: 80, diet: "Keto", type: "Cake", flavor: "Vegetables", servings: 16, img: 'recipes/keto_pumpkin_cheesecake.jpg'},
         {id: "o", name: "Pumpkin Pie", prep: 15, cook: 45, diet: "Keto", type: "Pie", flavor: "Vegetables", servings: 16, img: 'recipes/keto_pumpkin_pie.jpg'}
       ],
+      /** A list to hold recipes added to the Favorite Section */
       favoriteList:[]
     };
   }
 
+  /** Function addFavorite which takes in the id of the newly added recipe, checks whether it is already in the favoriteList and adds it to the favoriteList if not previously added */
   addFavorite = id => {
     let isAdded = this.state.favoriteList.some(item => item.id === id);
     if (!isAdded) {
@@ -40,6 +44,7 @@ class App extends Component {
     }
   };
   
+  /** Function removeFavorite which takes in the id of the recipe to be removed and removes it from the favoriteList */
   removeFavorite = id => {
     const favoriteList = this.state.favoriteList.filter(item => item.id != id);
     this.setState({favoriteList});
@@ -47,6 +52,9 @@ class App extends Component {
 
   render() {
     return (
+      /** Rendering all the components on the page and passing down props to different components accordingly */
+      /** Passing the list of all recipes and addFavorite Function to FilteredList */
+      /** Passing the list of recipes added to favorite and removeFavorite Function to FavoriteSection */
       <main>
       <h1 class="mb-4 heading">Quarantine Baking Recipes</h1>
       <Row>

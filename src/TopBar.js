@@ -4,11 +4,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+/** Component TopBar to render the navigation bar with filtering and sorting functionalities */
+
 class TopBar extends Component {
   constructor(props) {
     super(props);
   }
 
+  /** Function to return the current sorting criteria based on the state inherited from FilteredList.js  */
   showSortTitle = (state) => {
     if (state === "Select") {
       return "Select";
@@ -28,6 +31,7 @@ class TopBar extends Component {
   }
   
   render() {  
+    /** Rendering the navigation bar and setting the onSelect behavior of all nav links to the functions inherited from FilteredList.js */
     return (
       <div class="mb-4">
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">

@@ -6,10 +6,13 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+/** Component PastryCard to create a card for each recipe inherited from DisplayList.js */
+
 class PastryCard extends Component {
     constructor(props) {
         super(props);
     }
+    /** Function to return the corresponding icon to each type of dessert */
     pastry_type() {
         if (this.props.item.type === "Cake") {
             return 'recipes/cake_icon.png';
@@ -23,6 +26,8 @@ class PastryCard extends Component {
     };
 
     render() {
+        /** Returning a card for the current recipe and setting the onClick behavior of the addFavorite button to the function
+         * inherited from DisplayList.js */
         return (
             <div key={this.props.item.id}>
                 <Card bg="light" style={{ width: '17rem', height: '41rem'}}>
