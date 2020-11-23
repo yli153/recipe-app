@@ -10,6 +10,7 @@ import CardColumns from 'react-bootstrap/CardColumns';
  * for all favorite recipes inherited from App.js */
 
 class FavoriteSection extends Component {
+    /** Props inherited from App.js: favoriteList and removeFavorite function */
     constructor(props) {
         super(props);
     }

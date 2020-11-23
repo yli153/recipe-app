@@ -7,6 +7,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 /** Component TopBar to render the navigation bar with filtering and sorting functionalities */
 
 class TopBar extends Component {
+  /** Props inherited from FilteredList: onSelectFilterDiet, onSelectFilterType, onSelectFilterFlavor and onSelectSort 
+   *  functions and sortTitle state */
   constructor(props) {
     super(props);
   }

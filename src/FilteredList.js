@@ -6,6 +6,7 @@ import TopBar from './TopBar';
  *  and renders TopBar as well as DisplayList */
 
 class FilteredList extends Component {
+    /** Props inherited from App.js: the original recipeList and addFavorite function */
     constructor(props) {
         super(props);
         /** State to keep track of all the selected filtering and sorting criteria; default filtering criteria set to "All" and sorting criteria set to 

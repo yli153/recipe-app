@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 /** Component PastryCard to create a card for each recipe inherited from DisplayList.js */
 
 class PastryCard extends Component {
+    /** Props inherited from DisplayList.js: individual recipe and addFavorite function */
     constructor(props) {
         super(props);
     }

@@ -6,6 +6,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
  * and displays those recipes as cards */
 
 class DisplayList extends Component {
+    /** Props inherited from Filteredlist: list of recipes that are filtered and sorted and addFavorite function */
     constructor(props) {
         super(props);
     }
