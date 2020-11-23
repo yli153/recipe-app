@@ -34,7 +34,8 @@ class App extends Component {
     };
   }
 
-  /** Function addFavorite which takes in the id of the newly added recipe, checks whether it is already in the favoriteList and adds it to the favoriteList if not previously added */
+  /** Function addFavorite which takes in the id of the newly added recipe, checks whether it is already in the favoriteList, makes a new favoriteList with this recipe added 
+   *  if it has not been previously added and sets the state to the new favoriteList */
   addFavorite = id => {
     let isAdded = this.state.favoriteList.some(item => item.id === id);
     if (!isAdded) {
@@ -44,7 +45,7 @@ class App extends Component {
     }
   };
   
-  /** Function removeFavorite which takes in the id of the recipe to be removed and removes it from the favoriteList */
+  /** Function removeFavorite which takes in the id of the recipe to be removed, makes a new favoriteList with this recipe removed and sets the state to the new favoriteList */
   removeFavorite = id => {
     const favoriteList = this.state.favoriteList.filter(item => item.id != id);
     this.setState({favoriteList});
