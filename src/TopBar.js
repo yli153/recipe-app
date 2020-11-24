@@ -25,7 +25,7 @@ class TopBar extends Component {
       return "Cook Time: Shortest to Longest";
     } else if (state === "CookDescending") {
       return "Cook Time: Longest to Shortest";
-    } else if (state === "ServingAscending") {
+    } else if (state === "ServingsAscending") {
       return "Servings: Less to More";
     } else {
       return "Servings: More to Less";

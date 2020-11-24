@@ -45,6 +45,12 @@ main {
   height: auto;
 }
 
+.recipe-icon {
+  width: 55px;
+  height: auto;
+  margin-left: 10px;
+}
+
 .card-deck .card {
   margin-bottom: 15px !important;
 }

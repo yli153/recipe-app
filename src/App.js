@@ -57,7 +57,7 @@ class App extends Component {
       /** Passing the list of all recipes and addFavorite Function to FilteredList */
       /** Passing the list of recipes added to favorite and removeFavorite Function to FavoriteSection */
       <main>
-      <h1 class="mb-4 heading">Quarantine Baking Recipes</h1>
+      <h1 class="mb-4 heading">Quarantine Baking Recipes<img class="recipe-icon" src="recipes/recipe_icon.PNG" alt="recipe icon"></img></h1>
       <Row>
         <Col xs={8} class="recipe-cards">
           <FilteredList list={this.state.recipeList} addFavorite={this.addFavorite}></FilteredList>
