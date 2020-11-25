@@ -9,12 +9,13 @@ TopBar.js, FilteredList.js, DisplayList.js, PastryCard.js and FavoriteSection.js
 that App calls FilteredList and FavoriteSection; FilteredList calls TopBar and DisplayList; and DisplayList calls PastryCard. 
     
     App.js holds the data for both the original recipe list and the favorite recipe list as states and renders all the 
-sub-components by directly calling FilteredList and FavoriteSection. It also possesses the addFavorite and removeFavorite
+sub-components by directly calling FilteredList and FavoriteSection. It also contains the addFavorite and removeFavorite
 functions which update the favorite recipe list accordingly to user input. FilteredList takes care of all the filtering and sorting 
 functionalities and renders two other sub-components: TopBar and DisplayList. TopBar creates the navigation bar where users will 
 be able to select different filtering categories and sorting features whereas DisplayList calls the sub-component PastryCard to 
 create individual pastry cards and formulate a card deck. Lastly, the sub-component FavoriteSection handles the addition and 
-removal of recipes from the favorite and calculates the total time (including both prep and cook time) of the favorite recipes.
+removal of recipes from the favorite and calculates the total prep time, total cook time and total time (prep + cook) of the 
+favorite recipes.
 
 
 2) How data is passed down through components
@@ -59,7 +60,8 @@ function will be triggered. The sortCriteria state in FilteredList will then be 
 (i.e., favoriteList). The original recipe list remains unchanged throughout while the favorite recipe list gets updated. When the user 
 hits the "Add to Favorite" button, the addFavorite function is triggered on click. The addFavorite function then takes in the id of the 
 newly added recipe, checks whether it is already in the favoriteList, makes a new favoriteList with the newly added recipe if it has not 
-been previously added and sets the state to the new favoriteList. In contrast, the user hits the "Remove" button, the removeFavorite 
-function is triggered on click. The removeFavorite function then takes in the id of the recipe to be removed, makes a new favoriteList 
-with the selected recipe removed and sets the state to the new favoriteList. As a result, the state favoriteList essentially gets updated 
-by the addFavorite and removeFavorite functions. 
+been previously added and sets the state to the new favoriteList. If the recipe is already added to the favorite section, a pop-up alert 
+will show up to inform the user about that. In contrast, the user hits the "Remove" button, the removeFavorite function is triggered on 
+click. The removeFavorite function then takes in the id of the recipe to be removed, makes a new favoriteList with the selected recipe 
+removed and sets the state to the new favoriteList. As a result, the state favoriteList essentially gets updated by the addFavorite and 
+removeFavorite functions. 

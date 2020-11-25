@@ -35,13 +35,15 @@ class App extends Component {
   }
 
   /** Function addFavorite which takes in the id of the newly added recipe, checks whether it is already in the favoriteList, makes a new favoriteList with this recipe added 
-   *  if it has not been previously added and sets the state to the new favoriteList */
+   *  if it has not been previously added and sets the state to the new favoriteList; if the recipe is already added to the favorite section, a pop-up alert will show up */
   addFavorite = id => {
     let isAdded = this.state.favoriteList.some(item => item.id === id);
     if (!isAdded) {
       const newFavorite = this.state.recipeList.filter(item => item.id === id)[0];
       const favoriteList = [...this.state.favoriteList, newFavorite];
       this.setState({favoriteList});
+    } else {
+      alert("This recipe is already added to favorite!")
     }
   };
   

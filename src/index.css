@@ -117,4 +117,8 @@ main {
   height: 2.5rem;
 }
 
+.bottom-border {
+  border-bottom: double;
+}
+
 
