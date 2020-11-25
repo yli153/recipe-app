@@ -6,7 +6,8 @@ import CardDeck from 'react-bootstrap/CardDeck';
  * and displays those recipes as cards */
 
 class DisplayList extends Component {
-    /** Props inherited from Filteredlist: list of recipes that are filtered and sorted and addFavorite function */
+    /** Props inherited from Filteredlist: list of recipes that are filtered and sorted and addFavorite function, the addFavorite and 
+     *  removeFavorite functions and the favorite recipe list*/
     constructor(props) {
         super(props);
     }
@@ -17,8 +18,8 @@ class DisplayList extends Component {
         }
         else {
             /** Creating a PastryCard for each recipe in the array by using a map function and passing down individual 
-             * recipe as well as addFavorite function inherited from FilteredList.js as props to PastryCard.js */ 
-            let pastryCards = this.props.list.map(item => <PastryCard item={item} addFavorite={this.props.addFavorite}/>) 
+             * recipe, the addFavorite and removeFavorite functions and the favoriteList inherited from FilteredList.js as props to PastryCard.js */ 
+            let pastryCards = this.props.list.map(item => <PastryCard item={item} addFavorite={this.props.addFavorite} removeFavorite={this.props.removeFavorite} favoriteList={this.props.favoriteList}/>) 
             return (
                 /** Returning a deck of pastry cards */ 
                 <CardDeck>{pastryCards}</CardDeck>

@@ -34,17 +34,11 @@ class App extends Component {
     };
   }
 
-  /** Function addFavorite which takes in the id of the newly added recipe, checks whether it is already in the favoriteList, makes a new favoriteList with this recipe added 
-   *  if it has not been previously added and sets the state to the new favoriteList; if the recipe is already added to the favorite section, a pop-up alert will show up */
+  /** Function addFavorite which takes in the id of the newly added recipe, makes a new favoriteList with this recipe added and sets the state to the new favoriteList */
   addFavorite = id => {
-    let isAdded = this.state.favoriteList.some(item => item.id === id);
-    if (!isAdded) {
-      const newFavorite = this.state.recipeList.filter(item => item.id === id)[0];
-      const favoriteList = [...this.state.favoriteList, newFavorite];
-      this.setState({favoriteList});
-    } else {
-      alert("This recipe is already added to favorite!")
-    }
+    const newFavorite = this.state.recipeList.filter(item => item.id === id)[0];
+    const favoriteList = [...this.state.favoriteList, newFavorite];
+    this.setState({favoriteList});
   };
   
   /** Function removeFavorite which takes in the id of the recipe to be removed, makes a new favoriteList with this recipe removed and sets the state to the new favoriteList */
@@ -62,11 +56,11 @@ class App extends Component {
       <h1 class="mb-4 heading">Quarantine Baking Recipes<img class="recipe-icon" src="recipes/recipe_icon.PNG" alt="recipe icon"></img></h1>
       <Row>
         <Col xs={8} class="recipe-cards">
-          <FilteredList list={this.state.recipeList} addFavorite={this.addFavorite}></FilteredList>
+          <FilteredList recipeList={this.state.recipeList} favoriteList={this.state.favoriteList} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite}></FilteredList>
         </Col>
         <Col xs={4} className="favorite-section">
           <h3 class="favorite-header"><b>Favorite Recipes &hearts;</b></h3>
-          <FavoriteSection list={this.state.favoriteList} removeFavorite={this.removeFavorite}></FavoriteSection>
+          <FavoriteSection favoriteList={this.state.favoriteList} removeFavorite={this.removeFavorite}></FavoriteSection>
           </Col>
     </Row>
     </main>

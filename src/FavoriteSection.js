@@ -15,15 +15,14 @@ class FavoriteSection extends Component {
         super(props);
     }
     /** Function createFavoriteItem which takes in a favorite recipe and creates a card for it; in particular, the removeFavorite function inherited from App.js is called here
-     *  in the remove button and triggered on click*/
+     *  in the unfavorite button and triggered on click*/
     createFavoriteItem = (item) => {
         return(
-            
                 <Card style={{ width: '100%' }}>
                 <Card.Header>
                     <Row>
                         <Col xs={8}><p class="favorite-item-name"><b>{item.name}</b></p></Col>
-                        <Col xs={4} className="align-right"><Button variant="primary" className="remove-button" onClick={() => this.props.removeFavorite(item.id)}>Remove</Button></Col>
+                        <Col xs={4} className="align-right"><Button variant="primary" className="remove-button" onClick={() => this.props.removeFavorite(item.id)}>Unfavorite</Button></Col>
                     </Row>
                 </Card.Header>
                 <ListGroup variant="flush">
@@ -50,30 +49,30 @@ class FavoriteSection extends Component {
 
     render() {
         /** Special case to print out a message when there hasn't been any recipe added to the favorite section yet */
-        if (this.props.list.length === 0) {
+        if (this.props.favoriteList.length === 0) {
             return (
                 <div>
                     <p class="no-favorite">No favorite recipe added yet</p>
                     <Row className="time-aggregator">
                         <Col xs={8}>Total Prep Time:</Col>
-                        <Col xs={4} className="align-right"><b>0 minute</b></Col>
+                        <Col xs={4} className="align-right">0 minute</Col>
                     </Row>
                     <Row className="time-aggregator bottom-border">
                         <Col xs={8}>Total Cook Time:</Col>
-                        <Col xs={4} className="align-right"><b>0 minute</b></Col>
+                        <Col xs={4} className="align-right">0 minute</Col>
                     </Row>
                     <Row className="time-aggregator">
-                        <Col xs={8}>Total Time (Prep + Cook):</Col>
+                        <Col xs={8}><b>Total Time (Prep + Cook):</b></Col>
                         <Col xs={4} className="align-right"><b>0 minute</b></Col>
                     </Row>
                 </div>);
         } else {
             /** Using map function and calling createFavoriteItem function to create a card for each favorite recipe */
-            let favoriteCards = this.props.list.map(item => this.createFavoriteItem(item)); 
+            let favoriteCards = this.props.favoriteList.map(item => this.createFavoriteItem(item)); 
             /** Using map function and reduce function to aggregate the prep time for all favorite recipes */
-            let totalPrepTime = this.props.list.map(item => item.prep).reduce((a, c) => a + c);
+            let totalPrepTime = this.props.favoriteList.map(item => item.prep).reduce((a, c) => a + c);
             /** Using map function and reduce function to aggregate the cook time for all favorite recipes */
-            let totalCookTime = this.props.list.map(item => item.cook).reduce((a, c) => a + c);
+            let totalCookTime = this.props.favoriteList.map(item => item.cook).reduce((a, c) => a + c);
             /** Adding total prep and cook time to get the final total time */
             let totalTime = totalPrepTime + totalCookTime;
             return (
@@ -82,14 +81,14 @@ class FavoriteSection extends Component {
                     <CardColumns className="favorite-cards">{favoriteCards}</CardColumns>
                     <Row className="time-aggregator">
                         <Col xs={8}>Total Prep Time:</Col>
-                        <Col xs={4} className="align-right"><b>{this.convertTime(totalPrepTime)}</b></Col>
+                        <Col xs={4} className="align-right">{this.convertTime(totalPrepTime)}</Col>
                     </Row>
                     <Row className="time-aggregator bottom-border">
                         <Col xs={8}>Total Cook Time:</Col>
-                        <Col xs={4} className="align-right"><b>{this.convertTime(totalCookTime)}</b></Col>
+                        <Col xs={4} className="align-right">{this.convertTime(totalCookTime)}</Col>
                     </Row>
                     <Row className="time-aggregator">
-                        <Col xs={8}>Total Time (Prep + Cook):</Col>
+                        <Col xs={8}><b>Total Time (Prep + Cook):</b></Col>
                         <Col xs={4} className="align-right"><b>{this.convertTime(totalTime)}</b></Col>
                     </Row>
                 </div>         

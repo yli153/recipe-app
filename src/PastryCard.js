@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 /** Component PastryCard to create a card for each recipe inherited from DisplayList.js */
 
 class PastryCard extends Component {
-    /** Props inherited from DisplayList.js: individual recipe and addFavorite function */
+    /** Props inherited from DisplayList.js: individual recipe, the addFavorite and removeFavorite functions and the favoriteList */
     constructor(props) {
         super(props);
     }
@@ -27,8 +27,12 @@ class PastryCard extends Component {
     };
 
     render() {
-        /** Returning a card for the current recipe and setting the onClick behavior of the addFavorite button to the function
-         * inherited from DisplayList.js */
+        /** Boolean to check if the current recipe has already been added to favorite */
+        let isAdded = this.props.favoriteList.some(item => item.id === this.props.item.id); 
+        /** Conditional branching to display text on the button */
+        let button_text = isAdded ? "Unfavorite" : "Add to Favorite";
+        /** Returning a card for the current recipe and setting the onClick behavior of the button to either the addFavorite or removeFavorite
+         *  function inherited from DisplayList.js based on isAdded boolean*/
         return (
             <div key={this.props.item.id}>
                 <Card bg="light" style={{ width: '17rem', height: '41rem'}}>
@@ -40,7 +44,7 @@ class PastryCard extends Component {
                     </Row>
                     <Card.Subtitle className="mb-2 text-muted"><b>{this.props.item.diet}</b></Card.Subtitle>  
                     <Card.Text>Flavor: {this.props.item.flavor}</Card.Text>
-                    <Button variant="primary" onClick={() => this.props.addFavorite(this.props.item.id)}>Add to Favorite</Button>
+                    <Button variant="primary" onClick={() => {isAdded ? this.props.removeFavorite(this.props.item.id) : this.props.addFavorite(this.props.item.id)}}>{button_text}</Button>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Prep Time: {this.props.item.prep} minutes</ListGroup.Item>
