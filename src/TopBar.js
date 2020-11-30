@@ -13,7 +13,7 @@ class TopBar extends Component {
     super(props);
   }
 
-  /** Function to return the current sorting criteria based on the state inherited from FilteredList.js  */
+  /** Function to return the current sorting criteria based on the sortTitle state inherited from FilteredList.js  */
   showSortTitle = (state) => {
     if (state === "Select") {
       return "Select";

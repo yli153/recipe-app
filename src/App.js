@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     return (
       /** Rendering all the components on the page and passing down props to different components accordingly */
-      /** Passing the list of all recipes and addFavorite Function to FilteredList */
+      /** Passing the list of all recipes, the list of favorite recipes and the addFavorite and removeFavorite functions to FilteredList */
       /** Passing the list of recipes added to favorite and removeFavorite Function to FavoriteSection */
       <main>
       <h1 class="mb-4 heading">Quarantine Baking Recipes<img class="recipe-icon" src="recipes/recipe_icon.PNG" alt="recipe icon"></img></h1>
